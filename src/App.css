@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Nunito:wght@700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #b8e6ff;
+  color: #4c321d;
+  font-family: 'Nunito', 'Mochiy Pop One', sans-serif;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+}
+
+.game-shell {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(#72c9f8 0%, #c7ecff 44%, #f8e7a6 45%, #f6d982 100%);
+  padding: 14px 18px 20px;
+  max-width: 1100px;
+  margin: auto;
+  border: 5px solid #fff6d9;
+  border-radius: 28px;
+}
+
+.sun {
+  position: absolute;
+  right: 8%;
+  top: 60px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #ffde66;
+  box-shadow: 0 0 0 16px #ffde6640;
+  z-index: 0;
+}
+
+.cloud {
+  position: absolute;
+  color: #fff;
+  font-size: 100px;
+  opacity: 0.75;
+  top: 5px;
+}
+
+.cloud-one { left: 10%; }
+.cloud-two { right: 35%; top: 50px; }
+
+.game-header, .savanna, .keyboard-area, footer {
+  position: relative;
+  z-index: 1;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand > span {
+  font-size: 48px;
+}
+
+.brand small {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #94652e;
+}
+
+.brand h1 {
+  margin: 2px 0;
+  font-size: clamp(20px, 3vw, 30px);
+  color: #8c4b20;
+  text-shadow: 1px 2px #fff;
+}
+
+.stats {
+  display: flex;
+  gap: 8px;
+}
+
+.stat {
+  background: #fff7dc;
+  border: 3px solid #d89d45;
+  border-radius: 17px;
+  padding: 7px 14px;
+  min-width: 100px;
+  text-align: center;
+  box-shadow: 0 4px #bc7e2c;
+}
+
+.stat small {
+  display: block;
+  font-size: 12px;
+}
+
+.stat strong {
+  font-size: 23px;
+  color: #8d501e;
+}
+
+.stat strong small {
+  display: inline;
+  font-size: 12px;
+}
+
+.savanna {
+  position: relative;
+  height: 390px;
+  border: 5px solid #fff1c9;
+  border-radius: 25px;
+  overflow: hidden;
+  background: linear-gradient(#71c9ff 0%, #bde9ff 53%, #d9e998 54%, #b4cc62 100%);
+  box-shadow: 0 6px 0 #d5a451;
+}
+
+.mountains {
+  position: absolute;
+  bottom: 110px;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  background: linear-gradient(140deg, transparent 20%, #b3bb83 20% 37%, transparent 37%),
+              linear-gradient(35deg, transparent 25%, #d1c68a 25% 50%, transparent 50%);
+  opacity: 0.5;
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(#a8c75e, #e2bd64);
+  border-top: 6px solid #9fb64c;
+  z-index: 1;
+}
+
+/* 木（🌳）の位置調整：回答カードの左右両脇からしっかり見えるように配置 */
+.tree {
+  position: absolute;
+  bottom: 60px;
+  font-size: 85px;
+  filter: drop-shadow(3px 5px #8e773e55);
+  z-index: 3;
+}
+.tree-left { left: 1.5%; }
+.tree-right { right: 1.5%; }
+
+.question-card {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(520px, 86%);
+  background: #fff4d7;
+  border: 4px solid #d8a34e;
+  border-radius: 24px;
+  padding: 10px 14px 12px;
+  text-align: center;
+  box-shadow: 0 6px #bc7e2c;
+  z-index: 4;
+}
+
+.question-title {
+  font-size: clamp(17px, 3vw, 23px);
+  font-weight: 900;
+  color: #7d4a22;
+}
+
+.animal-big {
+  font-size: 72px;
+  line-height: 1.1;
+  animation: bob 1.4s ease-in-out infinite;
+  filter: drop-shadow(2px 6px 3px rgba(80, 50, 20, 0.25));
+}
+
+.answer-slots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+}
+
+.answer-slots span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 40px;
+  background: #fff;
+  border: 2px solid #e2b46c;
+  border-radius: 9px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.answer-slots .filled {
+  background: #d9f5b5;
+  color: #426d2a;
+}
+
+.hint {
+  font-size: 13px;
+  background: #fff8e6;
+  border-radius: 12px;
+  padding: 4px 8px;
+  margin-top: 5px;
+}
+
+.message {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff9e6;
+  border: 2px solid #d4a24e;
+  border-radius: 30px;
+  padding: 7px 18px;
+  font-weight: 900;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* 動く動物エリア：右から左（前進）へ流れ、単独で重ならずにゆったり歩く設定 */
+.animal-runners {
+  position: absolute;
+  bottom: 35px;
+  width: 100%;
+  height: 70px;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.runner {
+  position: absolute;
+  font-size: 46px;
+  /* 立体的な接地影 */
+  filter: drop-shadow(2px 6px 4px rgba(60, 40, 10, 0.35));
+  /* 右から左（110% -> -10%）へ移動するアニメーション */
+  animation: walk-right-to-left linear infinite, bob-walk 1.2s ease-in-out infinite alternate;
+  will-change: transform, left;
+}
+
+/* 各動物の歩行タイミング・時間を大きくずらして重ならない（単独走行）ように設定 */
+.runner-0 { animation-duration: 26s, 1.4s; animation-delay: 0s, 0s; bottom: 8px; }
+.runner-1 { animation-duration: 24s, 1.2s; animation-delay: -6s, -0.4s; bottom: 25px; }
+.runner-2 { animation-duration: 28s, 1.5s; animation-delay: -12s, -0.8s; bottom: 2px; }
+.runner-3 { animation-duration: 22s, 1.3s; animation-delay: -18s, -0.2s; bottom: 18px; }
+.runner-4 { animation-duration: 27s, 1.6s; animation-delay: -9s, -0.6s; bottom: 12px; }
+
+/* 右から左へ前進する軌道 */
+@keyframes walk-right-to-left {
+  0% { left: 110%; }
+  100% { left: -10%; }
+}
+
+/* 歩行の上下揺れ・トコトコ立体感表現 */
+@keyframes bob-walk {
+  0% { transform: translateY(0px) rotate(-2deg) scale(1, 1); }
+  50% { transform: translateY(-4px) rotate(0deg) scale(1.03, 0.97); }
+  100% { transform: translateY(-1px) rotate(2deg) scale(0.98, 1.02); }
+}
+
+.keyboard-area {
+  margin-top: 14px;
+  background: #fff3d4;
+  border: 4px solid #e1b15d;
+  border-radius: 22px;
+  padding: 12px;
+  box-shadow: 0 5px #bf8a40;
+}
+
+.keyboard-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.keyboard-tools {
+  display: flex;
+  gap: 8px;
+}
+
+.tool-btn {
+  background: #f5c86f;
+  border-radius: 12px;
+  padding: 8px 14px;
+  color: #75461c;
+  font-weight: 900;
+  font-size: 14px;
+  box-shadow: 0 2px #c99b4d;
+}
+
+.tool-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.tool-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.kana-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.kana-key {
+  background: #fff;
+  border: 2px solid #dfb15d;
+  border-radius: 12px;
+  min-width: 0;
+  min-height: 48px;
+  font-size: 21px;
+  color: #77461e;
+  font-weight: 900;
+  box-shadow: 0 3px #c99b4d;
+  touch-action: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.kana-key small {
+  display: block;
+  font-size: 7px;
+  color: #b78b4e;
+  white-space: nowrap;
+  letter-spacing: -0.2px;
+}
+
+.kana-key:active {
+  transform: translateY(2px);
+  box-shadow: none;
+  background: #fff0bc;
+}
+
+.bottom-actions {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.start-button {
+  background: linear-gradient(#ffcb4e, #f39d32);
+  color: #633b18;
+  border: 3px solid #fff0b4;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 20px;
+  font-weight: 900;
+  box-shadow: 0 5px #bf7d27;
+  min-width: 220px;
+}
+
+.start-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px #bf7d27;
+}
+
+.giveup-button {
+  background: #d9b5a1;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: #633b18;
+  font-weight: 900;
+}
+
+.result-overlay {
+  position: fixed;
+  inset: 0;
+  background: #3a542caa;
+  display: grid;
+  place-items: center;
+  z-index: 20;
+  padding: 15px;
+}
+
+.result-card {
+  background: #fff4d6;
+  border: 6px solid #ffcc52;
+  border-radius: 30px;
+  padding: 25px;
+  text-align: center;
+  width: min(460px, 95%);
+  box-shadow: 0 10px #9b692c;
+  animation: pop 0.4s ease;
+}
+
+.result-card h2 {
+  font-size: 40px;
+  color: #e76e30;
+  margin: 6px;
+}
+
+.result-card h3 {
+  font-size: 28px;
+  color: #4f9b43;
+  margin: 0;
+}
+
+.result-card p {
+  font-size: 18px;
+}
+
+.confetti { font-size: 35px; }
+.kusudama { font-size: 55px; animation: shake 0.5s infinite; }
+
+.final-score {
+  font-size: 30px;
+  font-weight: 900;
+  color: #8c571e;
+  background: #ffe6a1;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 15px;
+}
+
+.final-score span {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+footer {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 12px;
+  color: #7e6537;
+}
+
+@keyframes bob { 50% { transform: translateY(-8px); } }
+@keyframes pop { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes shake { 25% { transform: rotate(-8deg); } 75% { transform: rotate(8deg); } }
+
+@media(max-width: 650px) {
+  .game-shell { padding: 9px; border-radius: 18px; border-width: 3px; }
+  .game-header { display: block; }
+  .brand { justify-content: center; margin-bottom: 8px; }
+  .brand > span { font-size: 35px; }
+  .stats { justify-content: center; }
+  .stat { min-width: 0; flex: 1; padding: 5px 4px; }
+  .stat strong { font-size: 19px; }
+  .savanna { height: 340px; }
+  .question-card { top: 8px; padding: 6px 10px; width: 88%; }
+  .animal-big { font-size: 52px; }
+  .answer-slots span { min-width: 27px; height: 35px; font-size: 18px; }
+  .hint { font-size: 11px; }
+  .tree { font-size: 60px; bottom: 50px; }
+  .tree-left { left: 0.5%; }
+  .tree-right { right: 0.5%; }
+  .message { font-size: 12px; bottom: 8px; padding: 5px 12px; }
+  .runner { font-size: 36px; }
+  .keyboard-area { padding: 8px; }
+  .kana-grid { gap: 4px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .kana-key { min-height: 42px; font-size: 16px; border-radius: 8px; padding: 2px 0; }
+  .kana-key small { font-size: 5.5px; letter-spacing: -0.35px; }
+  .start-button { font-size: 18px; padding: 10px 20px; }
+  .question-title { font-size: 16px; }
+}
+
+@media(max-width: 380px) {
+  .stats { gap: 4px; }
+  .stat small { font-size: 10px; }
+  .stat strong { font-size: 16px; }
+  .savanna { height: 310px; }
+  .kana-key { min-height: 40px; }
+  .brand h1 { font-size: 21px; }
+}
